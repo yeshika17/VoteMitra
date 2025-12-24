@@ -1,0 +1,267 @@
+/* Navbar.css */
+:root {
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --bg-glass: rgba(255, 255, 255, 0.95);
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+}
+
+/* Navbar.css */
+
+
+.navbar {
+  /* Change: Removed position: sticky and top: 0 */
+  position: relative; 
+  background: var(--bg-main);
+  border-bottom: 1px solid var(--border);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  /* Optional: Adds a very subtle shadow to separate it from the body */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02); 
+}
+/* Navbar.css refined variables */
+
+/* ... keep your navbar, logo, and search bar styles ... */
+
+.contact-wrapper {
+  color :#1f2937;
+  position: relative;
+  display: inline-block;
+}
+
+.nav-link.contact-trigger {
+    color: var(--primary);
+  background: rgba(79, 70, 229, 0.1);
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.contact-trigger:hover {
+  color: var(--primary);
+}
+
+/* The Cute Popup Box */
+.cutu-popup {
+  position: absolute;
+  top: 140%; /* Adjusted for height of your navbar */
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  min-width: 250px;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  border: 2px solid #ffc1e3;
+  z-index: 1000;
+  text-align: center;
+  animation: cutuPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Little Arrow pointing up */
+.cutu-popup::before {
+  content: '';
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #ffc1e3;
+}
+
+.close-x {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #ff85a2;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close-x:hover {
+  color: #ff3366;
+  transform: scale(1.1);
+}
+
+.cutu-popup h4 {
+  margin: 0 0 12px 0;
+  color: #ff66b2;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.contact-details p {
+  margin: 10px 0;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cutu-footer {
+  margin-top: 18px;
+  font-size: 0.85rem;
+  color: #ffb3d9;
+  font-style: italic;
+  border-top: 1px dashed #ffe0f0;
+  padding-top: 10px;
+}
+
+@keyframes cutuPop {
+  from { opacity: 0; transform: translateX(-50%) translateY(-10px) scale(0.9); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+.nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ... keep the rest of your Search Bar and Button styles from before ... */
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 8px;
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+}
+
+/* Search Bar */
+.nav-center {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 2rem;
+}
+
+.search-bar {
+  display: flex;
+  background: #f3f4f6;
+  padding: 6px 12px;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus-within {
+  background: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.search-bar input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 5px;
+  font-size: 0.9rem;
+}
+
+.search-icon {
+  width :auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* Links & Buttons */
+.menu-items, .auth-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+}
+
+.admin-link {
+  color: var(--primary);
+  background: rgba(79, 70, 229, 0.1);
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+/* User Badge */
+.user-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-right: 1px solid var(--border);
+  padding-right: 1rem;
+  margin-right: 0.5rem;
+}
+
+/* Buttons */
+.register-btn {
+  background: var(--primary);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.register-btn:hover {
+  background: var(--primary-hover);
+}
+
+.logout-btn {
+  background: #fee2e2;
+  color: #dc2626;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.logout-btn:hover {
+  background: #fecaca;
+}
+/* Existing Navbar styles remain... plus add these: */
+
+.contact-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.contact-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: white; /* Adjust based on your theme */
+  padding: 5px 10px;
+}

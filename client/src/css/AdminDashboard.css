@@ -1,0 +1,235 @@
+/* AdminDashboard.css - Cute & Soft Pastel Theme */
+
+/* 1. Global Layout & Container */
+.admin-dashboard {
+  padding: 2.5rem;
+  background-color: #fff9fb; /* Very soft pink-white */
+  min-height: 100vh;
+  font-family: 'Quicksand', 'Segoe UI', sans-serif; /* Rounded fonts work best */
+  color: #5d5d5d;
+}
+
+h1, h2, h3 {
+  color: #ff9fb2; /* Soft Strawberry Pink */
+  font-weight: 700;
+}
+
+/* 2. Quick Stats */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.stat-card {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 25px; /* Extra rounded for bubbly look */
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.2); /* Soft pink shadow */
+  border: 2px solid #fce4ec;
+  transition: all 0.3s ease;
+}
+/* Add to AdminDashboard.css */
+
+.result-popup {
+  position: fixed; /* so it stays on top */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  z-index: 1000; /* high enough to be on top */
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  max-width: 400px;
+  width: 90%;
+}
+
+.result-popup h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.result-popup button {
+  margin-top: 15px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #36A2EB;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.election-list button {
+  margin-top: 10px;
+  display: block;
+  width: 50%;
+  padding: 10px;
+  border: none;
+  background: #070607;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.result-popup button:hover {
+  background: #2b85c8;
+}
+
+/* Optional overlay */
+.result-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 999;
+}
+
+.stat-card:hover {
+  transform: scale(1.05);
+  background-color: #fff0f3;
+}
+
+/* 3. Top Row: Form & Image (Side-by-Side) */
+.dashboard-top-row {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  margin-bottom: 3rem;
+  border: 1px solid #fff0f5;
+}
+
+.election-section {
+  flex: 2;
+}
+
+.dashboard-image {
+  flex: 1;
+  max-width: 500px;
+  height: auto;
+  border-radius: 40px; /* Super rounded corners */
+  border: 8px solid #e3f2fd; /* Soft blue frame */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* 4. Playful Form Styling */
+.election-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.election-form input {
+  padding: 1rem;
+  border: 2px solid #f0f4f8;
+  border-radius: 15px;
+  background-color: #fdfdfd;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.election-form input:focus {
+  border-color: #bbdefb; /* Baby blue focus */
+}
+
+.election-form button {
+  background: linear-gradient(135deg, #ffc1cc, #ff9fb2); /* Strawberry Gradient */
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 159, 178, 0.3);
+}
+
+.election-form button:hover {
+  filter: brightness(1.05);
+  transform: translateY(-2px);
+}
+
+/* 5. Tables & Lists */
+.election-list li {
+  background: #fdf2f5;
+  padding: 0.8rem 1.2rem;
+  margin-bottom: 0.6rem;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  border-left: 5px solid #ffc1cc;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px; /* Spacing between rows */
+}
+
+th {
+  color: #b0bec5;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 10px;
+}
+
+td {
+  background: white;
+  padding: 1.2rem;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+/* 6. Cute Results Popup */
+.result-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 3rem;
+  border-radius: 40px;
+  box-shadow: 0 30px 60px rgba(255, 182, 193, 0.4);
+  z-index: 1000;
+  text-align: center;
+  border: 5px solid #fff5f7;
+}
+
+.candidate-card {
+  padding: 1rem;
+  margin: 0.8rem 0;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.candidate-card.first { background: #fff9c4; color: #f9a825; } /* Pale Lemon */
+.candidate-card.second { background: #e1f5fe; color: #0288d1; } /* Sky Blue */
+.candidate-card.third { background: #efebe9; color: #795548; } /* Soft Latte */
+
+/* 7. Logs Section */
+.logs-section {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f1f8e9; /* Soft Mint */
+  border-radius: 25px;
+  color: #558b2f;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .dashboard-top-row {
+    flex-direction: column;
+    text-align: center;
+  }
+}
