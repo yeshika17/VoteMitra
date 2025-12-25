@@ -2,8 +2,13 @@
   "name": "online-voting-system",
   "private": true,
   "scripts": {
-  "build": "cd client && npm install --include=dev && npm run build",
-  "start": "node server/server.js"
-}
-
+    "build": "cd client && npm install --include=dev && npm run build",
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
+    "mongoose": "^7.6.0"
+  }
 }
