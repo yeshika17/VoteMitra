@@ -1,42 +1,34 @@
 const express = require("express");
-const dotenv = require("dotenv");
-const connectDB = require("./config/db");
 const cors = require("cors");
 const path = require("path");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db");
 
 dotenv.config();
 
 const app = express();
 
 // Middleware
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
-// Connect DB (before routes is fine)
-connectDB();
-
-// API Routes
-app.use("/api/vote", require("./routes/voteRoutes"));
+// API routes
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/elections", require("./routes/electionRoutes"));
 app.use("/api/candidates", require("./routes/candidateRoutes"));
+app.use("/api/vote", require("./routes/voteRoutes"));
 
-// Serve frontend in production
+// Serve frontend
 if (process.env.NODE_ENV === "production") {
-  const clientPath = path.join(__dirname, "../client/dist");
+  app.use(express.static(path.join(__dirname, "../client/dist")));
 
-  app.use(express.static(clientPath));
-
-  // Express 5 compatible catch-all
-  app.get("/*", (req, res) => {
-    res.sendFile(path.join(clientPath, "index.html"));
-  });
-} else {
-  // Dev test route
-  app.get("/", (req, res) => {
-    res.send("API is running...");
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/dist/index.html"));
   });
 }
+
+// DB
+connectDB();
 
 // Start server
 const PORT = process.env.PORT || 5000;
