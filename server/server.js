@@ -1,10 +1,10 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const connectDB = require('./config/db');
-const cors = require('cors');
-const path = require('path');
+const express = require("express");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db");
+const cors = require("cors");
+const path = require("path");
 
-require('dotenv').config({ path: path.resolve(__dirname, './.env') });
+dotenv.config();
 
 const app = express();
 
@@ -12,33 +12,31 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Routes
-const authRoutes = require("./routes/authRoutes");
-const electionRoutes = require("./routes/electionRoutes");
-const candidateRoutes = require("./routes/candidateRoutes");
-const voteRoutes = require("./routes/voteRoutes");
-
-app.use("/api/vote", voteRoutes);
-app.use("/api/auth", authRoutes);
-app.use("/api/elections", electionRoutes);
-app.use("/api/candidates", candidateRoutes);
-
-// Serve React frontend in production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/dist"))); // Vite build goes to dist
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../client/dist/index.html"));
-  });
-}
-
-// Connect to DB
+// Connect DB (before routes is fine)
 connectDB();
 
-// Test route
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
+// API Routes
+app.use("/api/vote", require("./routes/voteRoutes"));
+app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/elections", require("./routes/electionRoutes"));
+app.use("/api/candidates", require("./routes/candidateRoutes"));
+
+// Serve frontend in production
+if (process.env.NODE_ENV === "production") {
+  const clientPath = path.join(__dirname, "../client/dist");
+
+  app.use(express.static(clientPath));
+
+  // Express 5 compatible catch-all
+  app.get("/*", (req, res) => {
+    res.sendFile(path.join(clientPath, "index.html"));
+  });
+} else {
+  // Dev test route
+  app.get("/", (req, res) => {
+    res.send("API is running...");
+  });
+}
 
 // Start server
 const PORT = process.env.PORT || 5000;
