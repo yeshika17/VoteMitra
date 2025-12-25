@@ -1,10 +1,11 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const connectDB = require('../config/db');
+const connectDB = require('./config/db');
 const cors = require('cors');
 const path = require('path');
 
-dotenv.config();
+require('dotenv').config({ path: path.resolve(__dirname, './.env') });
+
 const app = express();
 
 // Middleware
